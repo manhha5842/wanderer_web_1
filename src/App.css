@@ -1,0 +1,234 @@
+.App {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.app-header {
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+}
+
+.app-footer {
+  background-color: var(--surface);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.error-banner {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .app-header h1 {
+    font-size: 1.125rem;
+  }
+
+  .app-header nav .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* PWA specific styles */
+@media (display-mode: standalone) {
+  .app-header {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .app-footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Interactive Map Selector Styles */
+.interactive-map-selector {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Remove any default margins/paddings when in map mode */
+body:has(.interactive-map-selector) {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.interactive-map-selector .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure Leaflet controls are visible */
+.interactive-map-selector .leaflet-control-container {
+  z-index: 500;
+}
+
+.interactive-map-selector .leaflet-control-zoom {
+  z-index: 500;
+}
+
+/* Custom marker styles */
+.custom-marker {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Sidebar button styles */
+.interactive-map-selector button {
+  transition: all 0.2s ease;
+  z-index: 1000;
+}
+
+.interactive-map-selector button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.interactive-map-selector button:active {
+  transform: translateY(0);
+}
+
+/* Mission panel scrollbar */
+.interactive-map-selector .overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.interactive-map-selector .overflow-y-auto::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.interactive-map-selector .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.interactive-map-selector .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Action buttons row styling */
+.interactive-map-selector .bg-gray-50 {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.interactive-map-selector .bg-gray-50 button {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.interactive-map-selector .bg-gray-50 button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation for panels */
+.interactive-map-selector .absolute {
+  animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glassmorphism effect */
+.interactive-map-selector .bg-white {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Progress bar animation */
+.interactive-map-selector .bg-yellow-400 {
+  transition: width 0.5s ease-in-out;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .interactive-map-selector .w-80 {
+    width: calc(100vw - 6rem);
+    max-width: 320px;
+  }
+  
+  .interactive-map-selector .left-20 {
+    left: 4.5rem;
+  }
+
+  .interactive-map-selector .w-14 {
+    width: 3rem;
+  }
+
+  .interactive-map-selector .bottom-6 {
+    bottom: 1rem;
+  }
+
+  .interactive-map-selector .left-6 {
+    left: 1rem;
+  }
+
+  .interactive-map-selector .right-6 {
+    right: 1rem;
+  }
+}
+
+/* Floating elements shadow */
+.interactive-map-selector .shadow-lg,
+.interactive-map-selector .shadow-xl,
+.interactive-map-selector .shadow-2xl {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Button gradient hover effects */
+.interactive-map-selector .bg-gradient-to-r:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}

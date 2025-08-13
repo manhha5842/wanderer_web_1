@@ -1,0 +1,23 @@
+{
+    "name": "Walking Story App",
+    "short_name": "WalkStory",
+    "description": "AI-powered walking companion with GPS tracking and generated stories",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2563eb",
+    "icons": [
+        {
+            "src": "/vite.svg",
+            "sizes": "64x64",
+            "type": "image/svg+xml"
+        }
+    ],
+    "orientation": "portrait",
+    "scope": "/",
+    "categories": [
+        "fitness",
+        "entertainment",
+        "navigation"
+    ]
+}
